@@ -1,4 +1,5 @@
-package Mars;
+package mars;
+
 abstract class Entity {
 	Location location;
 	

@@ -1,4 +1,4 @@
-package Mars;
+package mars;
 
 public class ClusterGenerator 
 {

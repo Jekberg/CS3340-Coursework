@@ -1,4 +1,4 @@
-package Mars;
+package mars;
 
 import java.util.Random;
 import java.awt.Color;

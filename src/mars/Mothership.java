@@ -1,4 +1,4 @@
-package Mars;
+package mars;
 
 class Mothership extends Entity {
 	public Mothership(Location location){super(location);}

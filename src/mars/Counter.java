@@ -1,4 +1,4 @@
-package Mars;
+package mars;
 
 /**
  * Provide a counter for a participant in the simulation.

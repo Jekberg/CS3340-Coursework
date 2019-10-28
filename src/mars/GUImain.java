@@ -1,4 +1,4 @@
-package Mars;
+package mars;
 
 //Import general packages
 import java.awt.*;

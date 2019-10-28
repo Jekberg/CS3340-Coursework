@@ -1,4 +1,4 @@
-package Mars;
+package mars;
 
 import java.awt.*;
 import java.awt.event.*;
