@@ -3,7 +3,6 @@ package mars;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
 /**
  * A simulator simulator for Steels'(1990) Mars exploration paradigm, based on a toroidal field
  * containing rocks and obstacles.
@@ -203,6 +202,7 @@ public class Simulator
     }
     
     public static void main(String[] args){
+    	ModelConstants.setRandom();
     	Simulator s = new Simulator();
 		//s.randomLandMothership();
 		s.simulate(11000);
