@@ -300,9 +300,8 @@ public class GUImain {
 		try{
 		
 			// Run the simulation
-			for (int i = 0; i < ModelConstants.LENGTH; i++) {
+				s.simulate(ModelConstants.LENGTH);
 				s.simulateOneStep();
-			}
 			runLongButton.setText("Continue running");
 			runLongButton.setToolTipText("Continue running simulation for the duration specified.");
 		}

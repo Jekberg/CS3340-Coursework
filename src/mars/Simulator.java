@@ -78,8 +78,12 @@ public class Simulator
      * @param numSteps The number of steps to run for.
      */
     public void simulate(int numSteps)
-    {
-        for(int tick = 1; tick <= numSteps && view.isViable(field); tick++) {
+    {	
+        for(int tick = 1; tick <= numSteps
+        		&& (view.isViable(field)
+        		|| vehicles.stream().anyMatch(v -> v.carryingSample));
+        		tick++) {
+        		
             simulateOneStep();
         }
     }

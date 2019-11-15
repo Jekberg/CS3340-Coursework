@@ -67,8 +67,8 @@ class Vehicle extends Entity{
 	private void rule2ReturnToShip(Field f) {
 		if(carryingSample && !f.isNeighbourTo(location, Mothership.class))
 		{
-			var currentSignal = f.getSignalStrength(location);
-			var newLoc = f.getAllfreeAdjacentLocations(location)
+			int currentSignal = f.getSignalStrength(location);
+			Location newLoc = f.getAllfreeAdjacentLocations(location)
 				.stream()
 				.filter(loc -> currentSignal <= f.getSignalStrength(loc))
 				.max((l, r) -> f.getSignalStrength(l) - f.getSignalStrength(r))
@@ -80,9 +80,9 @@ class Vehicle extends Entity{
 	}
 	
 	private void rule3PickupSample(Field f, ArrayList<Rock> rocksCollected) {
-		if (f.isNeighbourTo(location, Rock.class))
+		if (!carryingSample && f.isNeighbourTo(location, Rock.class))
 		{
-			var rocLoc = f.getNeighbour(location, Rock.class);
+			Location rocLoc = f.getNeighbour(location, Rock.class);
 			rocksCollected.add((Rock) f.getObjectAt(rocLoc));
 			f.clearLocation(rocLoc);
 			carryingSample = true;
@@ -91,7 +91,7 @@ class Vehicle extends Entity{
 	
 	private void rule4MoveRandomly(Field f) {
 		
-		var newLocation = f.freeAdjacentLocation(location);
+		Location newLocation = f.freeAdjacentLocation(location);
 		if(newLocation != null)
 		{
 			f.clearLocation(location);
@@ -104,8 +104,8 @@ class Vehicle extends Entity{
 		if(carryingSample && !f.isNeighbourTo(location, Mothership.class))
 		{
 			f.dropCrumbs(location, 2);
-			var currentSignal = f.getSignalStrength(location);
-			var newLoc = f.getAllfreeAdjacentLocations(location)
+			int currentSignal = f.getSignalStrength(location);
+			Location newLoc = f.getAllfreeAdjacentLocations(location)
 				.stream()
 				.filter(loc -> currentSignal <= f.getSignalStrength(loc))
 				.max((l, r) -> f.getSignalStrength(l) - f.getSignalStrength(r))
@@ -120,8 +120,8 @@ class Vehicle extends Entity{
 		if(f.getCrumbQuantityAt(location) != 0)
 		{
 			f.pickUpACrumb(location);
-			var currentSignal = f.getSignalStrength(location);			
-			var newLoc = f.getAllfreeAdjacentLocations(location)
+			int currentSignal = f.getSignalStrength(location);			
+			Location newLoc = f.getAllfreeAdjacentLocations(location)
 				.stream()
 				.filter(loc -> currentSignal >= f.getSignalStrength(loc))
 				.filter(loc -> f.getCrumbQuantityAt(loc) != 0)
@@ -162,8 +162,8 @@ class Vehicle extends Entity{
 		if(!carryingSample && f.getCrumbQuantityAt(location) != 0)
 		{
 			f.pickUpACrumb(location);
-			var currentSignal = f.getSignalStrength(location);			
-			var newLoc = f.getAllfreeAdjacentLocations(location)
+			int currentSignal = f.getSignalStrength(location);			
+			Location newLoc = f.getAllfreeAdjacentLocations(location)
 				.stream()
 				.filter(loc -> currentSignal >= f.getSignalStrength(loc))
 				.filter(loc -> f.getCrumbQuantityAt(loc) != 0)

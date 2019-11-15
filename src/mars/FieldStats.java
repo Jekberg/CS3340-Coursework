@@ -90,7 +90,8 @@ public class FieldStats
     /**
      * Determine whether the simulation is still viable.
      * I.e., should it continue to run.
-     * @return true If there is more than one types of Actor present.
+     * @return true If there is more than one types of Actor present or
+     * 			return false if there are no Rocks on the field.
      */
     public boolean isViable(Field field)
     {
@@ -106,6 +107,11 @@ public class FieldStats
                 nonZero++;
             }
         }
+        
+        Counter c = counters.get(Rock.class);
+        if(c != null && c.getCount() == 0)
+        	return false;
+        
         return nonZero > 1;
     }
     
